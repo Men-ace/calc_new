@@ -3,6 +3,9 @@ const allButtonsElm = document.querySelectorAll(".btn")
 let strToDisplay = "";
 const displayElm = document.querySelector(".display");
 
+
+const operators = ["/", "*", "-", "+", "%"];
+
  const buttonAction = (value) => {
     if (value ==="AC"){
         strToDisplay = "";
@@ -10,6 +13,15 @@ const displayElm = document.querySelector(".display");
     }
 
     if(value === "="){
+        // get the last character
+        const lastChar = strToDisplay[strToDisplay.length - 1];
+
+        // check it is one of the operaators
+        if (operators.includes(lastChar)){
+            strToDisplay = strToDisplay.slice(0, -1); 
+        }
+
+
         return displayTotal();
     }
 
